@@ -22,6 +22,7 @@ class JobsController < ApplicationController
     i=0
     bids.each do |b| 
       @biddetails[i] = Hash.new
+      @biddetails[i]['id'] = b.id
       @biddetails[i]['by'] = b.user_id
       @biddetails[i]['coins'] = b.coins
       @biddetails[i]['userimage'] = User.find(b.user_id).img

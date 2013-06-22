@@ -11,6 +11,9 @@
     <li>
     <%= link_to 'my projects', myprojects_path %>
     </li>
+    <li>
+    <%= image_tag(current_user.img, :size => "30x30") %>
+    </li>
   <% else %>
     <li>
     <%= link_to 'Login', new_user_session_path %>

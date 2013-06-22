@@ -7,6 +7,7 @@ Tudlr2::Application.routes.draw do
   match '/myjobs', to: 'static_pages#myjobs'
 
   match '/bid', to: "static_pages#bid"
+  match '/accept/:bid', to: "static_pages#accept"
 
   resources :jobs
 

@@ -58,15 +58,22 @@
 <% if user_signed_in? %>
     <% if current_user.id == @job.user_id %>
         <% if @biddetails %>
-          <% @biddetails.each do |bd| %>
-           <div>
-            <p><%= bd["coins"] %></p>
-            <p><%= bd["by"] %></p>
-            <%= image_tag(bd["userimage"]) %>
-           </div>
-          <% end %>
+          <table class="table table-striped">
+            <tr>
+              <td>coins</td>
+              <td>by</td>
+              <td>action</td>
+            </tr>
+            <% @biddetails.each do |bd| %>
+             <tr>
+              <td><%= bd["coins"] %></td>
+              <td><%= image_tag(bd["userimage"], :size => "40x40") %></td>
+               <td><%= link_to 'accept' , "/accept/#{bd['id']}" %></td>
+             </tr>
+            <% end %>
+          </table>
         <% else %>
-         <p> no offers till now </p>
+          <p> no offers till now </p>
         <% end %>
     <% else %>
         <%= form_tag("/bid", :method => "post") do %>
