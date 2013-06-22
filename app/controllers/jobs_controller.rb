@@ -18,17 +18,38 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     bids = Bid.find_all_by_job_id(params[:id])
+    userbid = Bid.find(:all, :conditions => ["user_id = ? and job_id = ?", current_user.id, params[:id]])
     @biddetails = Array.new
+     @acceptflag = "openforbid"
     i=0
-    bids.each do |b| 
-      @biddetails[i] = Hash.new
-      @biddetails[i]['id'] = b.id
-      @biddetails[i]['by'] = b.user_id
-      @biddetails[i]['coins'] = b.coins
-      @biddetails[i]['userimage'] = User.find(b.user_id).img
-      i = i+1
+    if signed_in?                           #authenticated-user
+      @usr = "signedin"
+      if current_user.id == @job.user_id #owner-user
+        @usr = "owner"
+        bids.each do |b| 
+          @biddetails[i] = Hash.new
+          @biddetails[i]['id'] = b.id
+          @biddetails[i]['by'] = b.user_id
+          @biddetails[i]['coins'] = b.coins
+          @biddetails[i]['userimage'] = User.find(b.user_id).img
+          if b.status == 1
+            @acceptflag = "accepted"
+            @acceptedbid =  @biddetails[i]
+          elsif b.status == 0
+            @acceptflag = "completed"
+            @acceptedbid =  @biddetails[i]
+          end
+          i = i+1
+        end
+      elsif userbid.empty?
+        @usr = "general"
+      else
+        @usr = "bidder"
+        @status = userbid[0].status
+        @c=userbid[0].coins
+      end
     end
-
+    @bidcount = bids.count
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @job }

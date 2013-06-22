@@ -55,39 +55,87 @@
   <%= @job.completedby %>
 </p>
 
+
+
 <% if user_signed_in? %>
-    <% if current_user.id == @job.user_id %>
-        <% if @biddetails %>
+   
+   <% if @usr == "owner" %>
+      <% if @acceptflag == "accepted" %>
           <table class="table table-striped">
             <tr>
               <td>coins</td>
               <td>by</td>
-              <td>action</td>
+              <td>action1</td>
+              <td>action2</td>
             </tr>
-            <% @biddetails.each do |bd| %>
-             <tr>
-              <td><%= bd["coins"] %></td>
-              <td><%= image_tag(bd["userimage"], :size => "40x40") %></td>
-               <td><%= link_to 'accept' , "/accept/#{bd['id']}" %></td>
-             </tr>
-            <% end %>
+            <tr>
+              <td><%= @acceptedbid["coins"] %></td>
+              <td><%= image_tag(@acceptedbid["userimage"], :size => "40x40") %></td>
+              <td><%= link_to 'complete' , "/complete/#{@acceptedbid['id']}" %></td>
+              <td><%= link_to 'reject' , "/reject/#{@acceptedbid['id']}" %></td>
+            </tr>
+
           </table>
-        <% else %>
-          <p> no offers till now </p>
-        <% end %>
-    <% else %>
+      <% elsif @acceptflag == "completed" %>
+          <table class="table table-striped">
+            <tr>
+              <td>coins</td>
+              <td> DID by</td>
+              
+            </tr>
+            <tr>
+              <td><%= @acceptedbid["coins"] %></td>
+              <td><%= image_tag(@acceptedbid["userimage"], :size => "40x40") %></td>
+            </tr>
+
+          </table>
+      <% else %> 
+       
+              <% if @biddetails %>
+                  <table class="table table-striped">
+                    <tr>
+                      <td>coins</td>
+                      <td>by</td>
+                      <td>action</td>
+                    </tr>
+                    <% @biddetails.each do |bd| %>
+                     <tr>
+                      <td><%= bd["coins"] %></td>
+                      <td><%= image_tag(bd["userimage"], :size => "40x40") %></td>
+                       <td><%= link_to 'accept' , "/accept/#{bd['id']}" %></td>
+                     </tr>
+                    <% end %>
+                  </table>
+            <% else %>
+                  <p> No offers till now </p>
+            <% end %>
+      <% end %> 
+    <% elsif @usr == "bidder" %>
+         <p> Your Bid amount is <%= @c %></p>
+         <% if @status == -1 %>
+              <p>Please wait for the Owner's response</p>
+         <% elsif @status == 1 %>
+              <p>Please complete and submit the task asap</p>
+         <% elsif @status == 2 %>
+              <p>Oops, try your luck with some other</p>
+         <% elsif @status == 0 %>
+              <p>Congrats.................</p>
+         <% end %>
+     <% elsif @usr == "general" %>
+        <p>Number of Bids, so far is <%= @bidcount %></p>
         <%= form_tag("/bid", :method => "post") do %>
-        <%= label_tag(:coins, "I will do this for :") %>
+        <%= label_tag(:coins, "I can do this for :") %>
         <%= text_field_tag(:coins) %>
         <%= hidden_field_tag(:job_id, @job.id) %>
         <%= submit_tag("Bid") %>
         <% end %>
-    <% end %>
+
+        <p></p>
+   <% end %>
+
+<% else %>
+   <p>Number of Bids, so far is <%= @bidcount %></p>
+   <p> Login to bid for this job</p>
 <% end %>
 
 
-
-
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
