@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me ,:provider, :uid
+  attr_accessible :name, :email, :password, :location, :lurl, :img, :coins, :sucssesrate, :portlink, :id , :password_confirmation, :remember_me ,:provider, :uid
   
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
   user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
                          provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
+                         lurl:auth.info.urls.public_profile,
+                         location:auth.info.location,
+                         img:auth.info.image,
                          password:Devise.friendly_token[0,20]
                          )
   end
