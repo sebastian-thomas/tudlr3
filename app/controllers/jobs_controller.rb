@@ -17,6 +17,16 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
+    bids = Bid.find_all_by_job_id(params[:id])
+    @biddetails = Array.new
+    i=0
+    bids.each do |b| 
+      @biddetails[i] = Hash.new
+      @biddetails[i]['by'] = b.user_id
+      @biddetails[i]['coins'] = b.coins
+      @biddetails[i]['userimage'] = User.find(b.user_id).img
+      i = i+1
+    end
 
     respond_to do |format|
       format.html # show.html.erb

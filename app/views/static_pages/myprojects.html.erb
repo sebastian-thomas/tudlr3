@@ -1,0 +1,5 @@
+<% if @myprojects %>
+  <% @myprojects.each do |j| %>
+    <%= link_to j.title , j %>
+  <% end %>
+<% end %>

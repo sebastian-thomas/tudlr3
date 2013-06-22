@@ -55,6 +55,32 @@
   <%= @job.completedby %>
 </p>
 
+<% if user_signed_in? %>
+    <% if current_user.id == @job.user_id %>
+        <% if @biddetails %>
+          <% @biddetails.each do |bd| %>
+           <div>
+            <p><%= bd["coins"] %></p>
+            <p><%= bd["by"] %></p>
+            <%= image_tag(bd["userimage"]) %>
+           </div>
+          <% end %>
+        <% else %>
+         <p> no offers till now </p>
+        <% end %>
+    <% else %>
+        <%= form_tag("/bid", :method => "post") do %>
+        <%= label_tag(:coins, "I will do this for :") %>
+        <%= text_field_tag(:coins) %>
+        <%= hidden_field_tag(:job_id, @job.id) %>
+        <%= submit_tag("Bid") %>
+        <% end %>
+    <% end %>
+<% end %>
+
+
+
+
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>
