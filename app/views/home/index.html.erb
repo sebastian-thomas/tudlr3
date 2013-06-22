@@ -1,4 +1,8 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% @jobs.each do |job| %>
+  <p><%=link_to job.title, job %></p>
+  <p><%= truncate(job.desc, :length => 200).html_safe %></p>
+ <p>Coins: <%= job.coins %></p>
+ <p>Expires on <%= job.expiry %></p>
+ ===================================
 <% end %>

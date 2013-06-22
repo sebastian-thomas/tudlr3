@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @job.title %>
+</p>
+
+<p>
+  <b>Jtype:</b>
+  <%= @job.jtype %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @job.desc %>
+</p>
+
+<p>
+  <b>Coins:</b>
+  <%= @job.coins %>
+</p>
+
+<p>
+  <b>Expiry:</b>
+  <%= @job.expiry %>
+</p>
+
+<p>
+  <b>Jtime:</b>
+  <%= @job.jtime %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @job.user_id %>
+</p>
+
+<p>
+  <b>Grade:</b>
+  <%= @job.grade %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @job.status %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @job.category %>
+</p>
+
+<p>
+  <b>Completedby:</b>
+  <%= @job.completedby %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

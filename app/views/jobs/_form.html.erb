@@ -1,0 +1,43 @@
+<%= simple_form_for(@job) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+      <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :jtype %><br />
+    Developer<%= radio_button("job", "jtype", "1" , :checked => true)  %> 
+    Designer<%= radio_button("job", "jtype", "2")  %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br />
+    <%= text_area(:job, :desc, :cols => 120, :rows => 5) %>
+  </div>
+  <div class="field">
+    <%= f.label :coins %><br />
+    <%= f.number_field :coins %>
+  </div>
+  <div class="field">
+    <%= f.label :expiry %><br />
+    <%= f.date_select :expiry %>
+  </div>
+  <div class="field">
+    <%= f.label :jtime %><br />
+    <%= f.date_select :jtime %>
+  </div>
+  <div class="field">
+    <%= f.label :grade %><br />
+    easy<%= radio_button("job", "grade", "1" , :checked => true)  %> 
+    medium<%= radio_button("job", "grade", "2")  %>
+    hard<%= radio_button("job", "grade", "3")  %> 
+    pro<%= radio_button("job", "grade", "4")  %>
+  </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
