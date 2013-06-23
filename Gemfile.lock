@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jongilbraith/simple-private-messages.git
+  revision: 7ba7d3c9f7670ef3bddfc90390a49556a94f7013
+  specs:
+    simple-private-messages (0.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -217,6 +223,7 @@ DEPENDENCIES
   rolify (>= 3.2.0)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
+  simple-private-messages (= 0.0.0)!
   simple_form (>= 2.1.0)
   sqlite3
   therubyracer (>= 0.11.3)
