@@ -1,11 +1,19 @@
 <% if @user %>
-	<%= @user.id %>
-	<%= @user.name %>
-	<%= link_to "linkedin profile" , @user.lurl %>
-	<%= image_tag(@user.img, :size => "40x40")%><br>
+ <div class="">
+	<legend><%= @user.name %></legend><br>
+	<span class="pull-left">
+	<%= link_to "Linkedin Profile" , @user.lurl %>
+    </span>
+	<span class="pull-right">
+	<%= image_tag @user.img, :size => "100x100",:class => "img-circle"%><br>
+    </span>
 
+	<span class="text-center span8 inline">
+ 
+	<p class="span3">Jobs posted</p> <span class="span3"> <%= @numprojects %></span><br><hr>
+	<p class="span3">Jobs bidded</p><span class="span3"><%=   @numjobsbided  %></span><br><hr>
+	<p class="span3">Jobs completed</p> <span class="span3"><%=   @jobcomp  %></span><br><hr>
 
-	num jobs posted : <%= @numprojects %><br>
-	num of jobs bidded : <%=   @numjobsbided  %><br>
-	num of jobs completed : <%=   @jobcomp  %><br>
+	</span>
+ </div>
 <% end %>

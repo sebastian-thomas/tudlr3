@@ -1,8 +1,9 @@
 <ul class="nav">
   
   <% if user_signed_in? %>
-    <li class="img-circle">
-      <a href="/profile/<%=current_user.id %>"><%= image_tag(current_user.img, :size => "35x35") %></a></li>
+    <li>
+      <a href="/profile/<%=current_user.id %>">
+        <%= image_tag current_user.img, :size => "30x30",:class => "img-circle" %></a></li>
     <li>  <%= link_to 'My Jobs', myjobs_path %>    </li>
     <li>    <%= link_to 'My Projects', myprojects_path %>    </li>
     <li>  <%= link_to 'Create Project', '/jobs/new' %></li>

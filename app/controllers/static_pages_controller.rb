@@ -16,12 +16,13 @@ class StaticPagesController < ApplicationController
   end
 
   def myprojects
-  	@myprojects = current_user.jobs
+  	@myprojects = current_user.jobs.paginate(page: params[:page] , :per_page => 3)
   end
 
   def myjobs
   	myjobbids =  Bid.find_all_by_user_id(current_user.id)
-  	@myjobs = Job.find(:all, :conditions => ["id in (?)", myjobbids.collect(&:job_id)])
+  	@myjobs= Job.find(:all, :conditions => ["id in (?)", myjobbids.collect(&:job_id)])
+    #@myjobs = my.paginate(page: params[:page] , :per_page => 3)
   end
 
   def accept

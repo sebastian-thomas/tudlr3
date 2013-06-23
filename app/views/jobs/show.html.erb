@@ -31,7 +31,7 @@
 
 <br>
 </fieldset>
-<br><span class="span3">Tags</span><br>
+<br><hr><span class="span3">Tags</span><br>
 <table class="table-condensed">
   <tr>
   <% @job.tags.any? %>
@@ -41,14 +41,15 @@
   </td>
   <% end %>
   </tr>
-</table>
+</table><hr>
 
 
 <% if user_signed_in? %>
    
    <% if @usr == "owner" %>
+   <div style="background-color:#253338; color:white;">
       <% if @acceptflag == "accepted" %>
-          <table class="table table-striped">
+          <table class="table table-condensed">
             <tr>
               <td>coins</td>
               <td>by</td>
@@ -65,7 +66,7 @@
           </table>
 
       <% elsif @acceptflag == "completed" %>
-          <table class="table table-striped">
+          <table class="table table-condensed">
             <tr>
               <td>coins</td>
               <td> DID by</td>
@@ -80,7 +81,7 @@
       <% else %> 
        
               <% if @biddetails %>
-                  <table class="table table-striped">
+                  <table class="table table-condensed">
                     <tr>
                       <td>coins</td>
                       <td>by</td>
@@ -89,7 +90,7 @@
                     <% @biddetails.each do |bd| %>
                      <tr>
                       <td><%= bd["coins"] %></td>
-                      <td><%= image_tag(bd["userimage"], :size => "40x40") %></td>
+                      <td><a href='/profile/<%= bd["by"]%>'><%= image_tag(bd["userimage"], :size => "40x40") %></a></td>
                        <td><%= link_to 'accept' , "/accept/#{bd['id']}" %></td>
                      </tr>
                     <% end %>
@@ -97,9 +98,11 @@
             <% else %>
                   <p> No offers till now </p>
             <% end %>
+        </div><hr>
             <%= render 'disqus' %>
       <% end %> 
     <% elsif @usr == "bidder" %>
+    <div style="background-color:#253338; color:white;">
          <p> Your Bid amount is <%= @c %></p>
          <% if @status == -1 %>
               <p>Please wait for the Owner's response</p>
@@ -110,6 +113,7 @@
          <% elsif @status == 0 %>
               <p>Congrats.................</p>
          <% end %>
+    </div><hr>
          <%= render 'disqus' %>
      <% elsif @usr == "general" %>
       <div style="background-color:#253338; color:white;">
@@ -126,8 +130,10 @@
    <% end %>
 
 <% else %>
+<div style="background-color:#253338; color:white;">
    <p>Number of Bids, so far is <%= @bidcount %></p>
    <p> Login to bid for this job</p>
+</div>
 <% end %>
 
 

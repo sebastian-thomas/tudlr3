@@ -1,5 +1,22 @@
-<% if @myjobs %>
-  <% @myjobs.each do |j| %>
-    <%= link_to j.title , j %><br>
-  <% end %>
+<fieldset>
+ <legend class="span8">Your Jobs</legend>
+ <ul class="unstyled">
+ 
+ <% @myjobs.each do |job| %>
+ <li class="span9">
+ 	<div class="container">
+ 		<label><%=link_to job.title, job %></label>
+		 <p style="padding-left:20px;"><%= truncate(job.desc, :length => 200).html_safe %></p>
+		 <strong style="padding-left:20px;">Coins: <%= job.coins %></strong>
+		 <p style="padding-left:20px;"><%= job.expiry.strftime("expires on %d %b")%></p>
+	</div><hr>
+
+</li>
 <% end %>
+
+ </ul>
+ 
+</fieldset>
+
+
+
