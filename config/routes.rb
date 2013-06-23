@@ -10,6 +10,7 @@ Tudlr2::Application.routes.draw do
   match '/accept/:bid', to: "static_pages#accept"
   match '/complete/:bid', to: "static_pages#oncompletion"
   match '/reject/:bid', to: "static_pages#onrejection"
+  match '/profile/:id', to: "static_pages#profile"
 
   resources :jobs
 

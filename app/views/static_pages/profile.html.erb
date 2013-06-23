@@ -1,0 +1,11 @@
+<% if @user %>
+	<%= @user.id %>
+	<%= @user.name %>
+	<%= link_to "linkedin profile" , @user.lurl %>
+	<%= image_tag(@user.img, :size => "40x40")%><br>
+
+
+	num jobs posted : <%= @numprojects %><br>
+	num of jobs bidded : <%=   @numjobsbided  %><br>
+	num of jobs completed : <%=   @jobcomp  %><br>
+<% end %>

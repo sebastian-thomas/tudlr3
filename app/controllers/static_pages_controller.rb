@@ -5,6 +5,16 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  def profile
+    @user = User.where("id = ?", params[:id])
+    @user = @user[0]
+    if @user
+      @numprojects = Job.find_all_by_user_id(@user.id).count
+      @numjobsbided = Bid.find_all_by_user_id(@user.id).count
+      @jobcomp = Bid.find(:all, :conditions => ["status = 0 and user_id = ? ", @user.id]).count
+    end
+  end
+
   def myprojects
   	@myprojects = current_user.jobs
   end
