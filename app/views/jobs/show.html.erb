@@ -76,6 +76,7 @@
             </tr>
 
           </table>
+
       <% elsif @acceptflag == "completed" %>
           <table class="table table-striped">
             <tr>
@@ -109,6 +110,7 @@
             <% else %>
                   <p> No offers till now </p>
             <% end %>
+            <%= render 'disqus' %>
       <% end %> 
     <% elsif @usr == "bidder" %>
          <p> Your Bid amount is <%= @c %></p>
@@ -121,6 +123,7 @@
          <% elsif @status == 0 %>
               <p>Congrats.................</p>
          <% end %>
+         <%= render 'disqus' %>
      <% elsif @usr == "general" %>
         <p>Number of Bids, so far is <%= @bidcount %></p>
         <%= form_tag("/bid", :method => "post") do %>

@@ -1,6 +1,14 @@
 Tudlr2::Application.routes.draw do
 
 
+  resources :users do
+             resources :messages do
+               collection do
+                 post :delete_selected
+               end
+             end
+           end
+
   match '/home', to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
   match '/myprojects', to: 'static_pages#myprojects'

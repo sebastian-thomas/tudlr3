@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :jobs , dependent: :destroy
 
+  has_private_messages
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:linkedin]
