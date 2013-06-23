@@ -55,6 +55,10 @@
   <%= @job.completedby %>
 </p>
 
+<% @job.tags.any? %>
+  <% @job.tags.each do |tag| %>
+  <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+<% end %>
 
 
 <% if user_signed_in? %>

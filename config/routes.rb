@@ -9,6 +9,8 @@ Tudlr2::Application.routes.draw do
              end
            end
 
+  match 'tagged' => 'jobs#tagged', :as => 'tagged'
+
   match '/home', to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
   match '/myprojects', to: 'static_pages#myprojects'

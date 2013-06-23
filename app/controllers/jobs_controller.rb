@@ -117,6 +117,15 @@ class JobsController < ApplicationController
     end
   end
 
+  def tagged
+    if params[:tag].present? 
+      @k = params[:tag]
+      @jobs = Job.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 20)
+    else 
+      @jobs = Job.joball
+    end  
+  end
+
   def correct_user
     @jobs = current_user.jobs.find_by_id(params[:id])
     redirect_to root_path if @jobs.nil?
