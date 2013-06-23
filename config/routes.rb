@@ -1,14 +1,5 @@
 Tudlr2::Application.routes.draw do
 
-
-  resources :users do
-             resources :messages do
-               collection do
-                 post :delete_selected
-               end
-             end
-           end
-
   match 'tagged' => 'jobs#tagged', :as => 'tagged'
 
   match '/home', to: 'static_pages#home'
