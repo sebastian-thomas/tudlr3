@@ -23,3 +23,178 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
+body > .navbar {
+  font-size: 13px;
+
+
+
+  
+}
+@font-face
+{
+font-family:supercool;
+src: url('../fonts/comesinhandy.ttf');
+     
+}
+@font-face
+{
+font-family:san;
+src: url('../fonts/san.ttf');
+     
+}
+.navbar
+{
+  font-size: 20px;
+  font-style: bold;
+  font-family: san;
+  
+}
+
+body > .navbar .brand {
+  font-family: supercool; 
+  font-size: 35px;
+  width:200px;
+  float: right;
+  
+  font-weight: bold;
+  
+  text-shadow: 0 1px 0 rgba(255,238,55,.1), 0 0 30px rgba(255,238,55,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+body > .navbar .brand:hover {
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,238,55,.1), 0 0 30px rgba(255,238,55,.125);
+}
+
+
+.main {
+  position: relative;
+  padding: 40px 0;
+  
+  text-align: center;
+  
+  background: url('../img/shattered.png') repeat center center;
+
+
+}
+.main img {
+  
+}
+.main h1 {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  color:#918C8C;
+
+}
+.main p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+}
+.mkr {
+  text-align: center;
+  color: #5a5a5a;
+}
+.mkr h1 {
+  margin: 60px 0 10px;
+  font-size: 60px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.mkr h2 {
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+.mkr p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.mkr .marketing-byline {
+  margin-bottom: 40px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.25;
+  color: #999;
+}
+.mkr-img {
+  display: block;
+  margin: 0 auto 30px;
+  max-height: 145px;
+}
+
+.area.btn {
+  padding: 19px 24px;
+  font-size: 24px;
+  font-weight: 200;
+  color: #fff; 
+  border: 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+  -webkit-transition: none;
+     -moz-transition: none;
+          transition: none;
+}
+.area .btn:hover {
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+}
+.area .btn:active {
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+          box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+}
+
+.main .container {
+  position: relative;
+  z-index: 2;
+}
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #E56717 -moz-use-text-color #FFFFFF;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+}
+.main:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  background-color:#FBB117;
+  opacity: 0;
+ } 
+ .link {
+  margin: 0;
+  list-style: none;
+}
+.link li {
+  display: inline;
+  padding: 0 10px;
+  
+}
+.c1{
+margin-bottom:10px;
+
+}

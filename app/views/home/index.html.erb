@@ -1,10 +1,20 @@
-<h3>Home</h3>
-<%= will_paginate @jobs %>
-<% @jobs.each do |job| %>
-  <p><%=link_to job.title, job %></p>
-  <p><%= truncate(job.desc, :length => 200).html_safe %></p>
- <p>Coins: <%= job.coins %></p>
- <p>Expires on <%= job.expiry %></p>
- ===================================
+<fieldset>
+ <legend class="span8"> Home</legend>
+ <ul class="unstyled">
+ 
+ <% @jobs.each do |job| %>
+ <li class="span9">
+ 	<div class="container">
+ 		<label><%=link_to job.title, job %></label>
+		 <p style="padding-left:20px;"><%= truncate(job.desc, :length => 200).html_safe %></p>
+		 <strong style="padding-left:20px;">Coins: <%= job.coins %></strong>
+		 <p style="padding-left:20px;"><%= job.expiry.strftime("expires on %d %b")%></p>
+	</div><hr>
+
+</li>
 <% end %>
-<%= will_paginate @jobs %>
+
+ </ul>
+ <%= will_paginate @jobs %>
+</fieldset>
+

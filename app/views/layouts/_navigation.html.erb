@@ -1,39 +1,17 @@
-<%= link_to "Tudlr2", root_path, :class => 'brand' %>
 <ul class="nav">
+  
+  <% if user_signed_in? %>
+    <li class="img-circle">
+      <a href="/profile/<%=current_user.id %>"><%= image_tag(current_user.img, :size => "35x35") %></a></li>
+    <li>  <%= link_to 'My Jobs', myjobs_path %>    </li>
+    <li>    <%= link_to 'My Projects', myprojects_path %>    </li>
+    <li>  <%= link_to 'Create Project', '/jobs/new' %></li>
+    <li>  <%= link_to 'Inbox', '#' %></li>
+    <li>    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>    </li>
 
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-    </li>
-    <li>
-    <%= link_to 'my jobs', myjobs_path %>
-    </li>
-    <li>
-    <%= link_to 'my projects', myprojects_path %>
-    </li>
-    <li>
-    <%= image_tag(current_user.img, :size => "30x30") %>
-    </li>
   <% else %>
-    <li>
-    <%= link_to 'Login', new_user_session_path %>
-  </li>
-  <li>
-    <%= link_to "Login L", user_omniauth_authorize_path(:linkedin) %>
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
-    <% if current_user.has_role? :admin %>
-      <li>
-      <%= link_to 'Admin', users_path %>
-      </li>
-    <% end %>
-  <% else %>
-    <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
-    </li>
+  <li><a href="#why">Why Tudlr </a></li>
+  <li><a href="#how">How it works</a> </li>
+  <li><%= link_to "Login", user_omniauth_authorize_path(:linkedin) %></li>
   <% end %>
 </ul>

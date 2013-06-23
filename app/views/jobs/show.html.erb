@@ -1,64 +1,47 @@
 <p id="notice"><%= notice %></p>
+<fieldset>
+ <legend class="span8">Details of Job</legend>
+ <ul class="unstyled span9 inline">
+  <li><b class="span3">Title</b><span class="span3"><%= @job.title %></span> </li>
+   <li><b class="span3">Job Type</b><span class="span3">
+    
+    <% if @job.jtype == 1 %>
+     Developer
+    <%elsif @job.jtype == 2 %>
+     Designer
+    <%end%>
 
-<p>
-  <b>Title:</b>
-  <%= @job.title %>
-</p>
+  </span> </li>
+ <li><br><b class="span3">Job Description</b><br>
+  <span class="span6"><%= @job.desc %></span> </li>
 
-<p>
-  <b>Jtype:</b>
-  <%= @job.jtype %>
-</p>
+  <li><br><br><b class="span3">Coins</b>
+  <span class="span3"><%= @job.coins %></span> </li>
 
-<p>
-  <b>Desc:</b>
-  <%= @job.desc %>
-</p>
+  <li><b class="span3">Grade</b>
+  <span class="span3"><%= @job.grade %></span> </li>
 
-<p>
-  <b>Coins:</b>
-  <%= @job.coins %>
-</p>
+  <li><b class="span3">Expiry</b>
+  <span class="span3"><%= @job.expiry.strftime("%d %b") %></span> </li>
 
-<p>
-  <b>Expiry:</b>
-  <%= @job.expiry %>
-</p>
+<li><b class="span3">Complete Before</b>
+  <span class="span3"><%= @job.jtime.strftime("%d %b") %></span> </li>
 
-<p>
-  <b>Jtime:</b>
-  <%= @job.jtime %>
-</p>
+ </ul>
 
-<p>
-  <b>User:</b>
-  <%= @job.user_id %>
-</p>
-
-<p>
-  <b>Grade:</b>
-  <%= @job.grade %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @job.status %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @job.category %>
-</p>
-
-<p>
-  <b>Completedby:</b>
-  <%= @job.completedby %>
-</p>
-
-<% @job.tags.any? %>
+<br>
+</fieldset>
+<br><span class="span3">Tags</span><br>
+<table class="table-condensed">
+  <tr>
+  <% @job.tags.any? %>
   <% @job.tags.each do |tag| %>
-  <%= link_to tag.name, tagged_url(:tag => tag.name) %>
-<% end %>
+  <td style="padding-left:20px;">
+  <span class="span1"> </span><%= link_to tag.name, tagged_url(:tag => tag.name) %>
+  </td>
+  <% end %>
+  </tr>
+</table>
 
 
 <% if user_signed_in? %>
@@ -129,15 +112,17 @@
          <% end %>
          <%= render 'disqus' %>
      <% elsif @usr == "general" %>
-        <p>Number of Bids, so far is <%= @bidcount %></p>
+      <div style="background-color:#253338; color:white;">
+        <p class="span8">Number of Bids, so far is <%= @bidcount %></p>
         <%= form_tag("/bid", :method => "post") do %>
-        <%= label_tag(:coins, "I can do this for :") %>
+        <%= label_tag(:coins, "I can do this for ") %>
         <%= text_field_tag(:coins) %>
         <%= hidden_field_tag(:job_id, @job.id) %>
         <%= submit_tag("Bid") %>
         <% end %>
 
         <p></p>
+      </div>
    <% end %>
 
 <% else %>
