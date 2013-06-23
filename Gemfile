@@ -7,6 +7,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+
 gem 'omniauth'
 gem 'omniauth-linkedin'
 
